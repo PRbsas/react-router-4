@@ -2,11 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import './App.css';
 
+//Style Active Link with NavLink
+
 /*const isActiveFn = (match, location) => {
 	console.log(match, location)
 	return match
 }
-
 
 const Links = () => (
   <nav>
@@ -18,6 +19,8 @@ const Links = () => (
 			replace to='/contact'>Contact</NavLink>
   </nav>
 )				
+
+//Add Basic Routes
 
 const App = () => (
   <Router>
@@ -32,7 +35,11 @@ const App = () => (
 
 export default App;*/
 
-const App = () => (
+
+
+// Use URL Parameters
+
+/*const App = () => (
   <Router>
     <div>
       <Route path='/:page?-:subpage?' render={({match}) => (
@@ -48,4 +55,27 @@ const App = () => (
 
 export default App;
 
-// http://localhost:3000/react-router = page:react subpage:router
+// http://localhost:3000/react-router = page:react subpage:router*/
+
+
+//Use RegEx with Routes
+
+const App = (props) => (
+  <Router>
+    <div>
+      <Route 
+				path='/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)' 
+				render={({match}) => (
+				<h1>
+					ParamA: {match.params.a}<br />
+					ParamB: {match.params.b}
+				</h1>
+			)} />
+    </div>
+  </Router>
+);
+
+export default App;
+
+//path='/:a(\d+)/:b' http://localhost:3000/1234/hello
+//path='/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)' http://localhost:3000/03-15-2017.reactrouter
