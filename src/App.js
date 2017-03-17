@@ -5,7 +5,7 @@ import './App.css';
 //Style Active Link with NavLink
 
 /*const isActiveFn = (match, location) => {
-	console.log(match, location)
+ 	console.log(match, location)
 	return match
 }
 
