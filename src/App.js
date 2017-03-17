@@ -114,7 +114,7 @@ export default App;*/
 
 //Render Multiple Components for the same route
 
-const Links = () => 
+/*const Links = () => 
 	<nav>
 		<Link to='/home'>Home</Link>
 		<Link to='/about'>About</Link>
@@ -152,5 +152,34 @@ const App = (props) => (
 				
 
 
-	export default App;
+	export default App;*/
 
+
+
+//Render nested Routes
+
+const Home = () => (<h1>Home</h1>)
+const Projects = () => (
+	<div>
+		<h1>Projects</h1>
+		<Link to='/projects/color'>Color</Link>
+		<Link to='/projects/sound'>Sound</Link>
+		<Link to='/projects/grid'>Grid</Link>
+		<Route 
+			path='/projects/:section'
+			render={({match}) => <h2>{match.params.section}</h2>} />
+	</div>
+)
+
+const App = (props) => (
+	<Router>
+		<div>
+			<Link to='/'>Home</Link>
+			<Link to='/projects'>Projects</Link>
+			<Route exact path='/' component={Home} />
+			<Route path='/projects' component={Projects} />
+		</div>
+	</Router>
+)
+
+export default App;
