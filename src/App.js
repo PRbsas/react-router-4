@@ -84,14 +84,14 @@ export default App;*/
 
 //Render Catch-All Routes with Switch Component
 
-const Links = () => 
+/*const Links = () => 
 	<nav>
 		<Link to='/'>Home</Link>
 		<Link to='/about'>About</Link>
 		<Link to='/contact'>Contact</Link>
 	</nav>
 
-	class App extends Component {
+  class App extends Component {
 		render() {
 			return (
 				<Router>
@@ -108,4 +108,49 @@ const Links = () =>
 		}
 	}
 
+	export default App;*/
+
+
+
+//Render Multiple Components for the same route
+
+const Links = () => 
+	<nav>
+		<Link to='/home'>Home</Link>
+		<Link to='/about'>About</Link>
+	</nav>
+
+const Header = () => (
+	<div className='header'>
+		<Route 
+			path='/:page'
+			render={({match}) => (
+				<h1>{match.params.page} Header</h1>
+			)} />
+	</div>
+)
+
+const Content = () => (
+	<div className='content'>
+		<Route 
+			path='/:page'
+			render={({match}) => (
+				<h1>{match.params.page} Content</h1>
+			)} />
+	</div> 
+)
+
+const App = (props) => (
+	<Router>
+		<div>
+			<Links />
+			<Header />
+			<Content />
+		</div>
+	</Router>
+)
+				
+
+
 	export default App;
+
