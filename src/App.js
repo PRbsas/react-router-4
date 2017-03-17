@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
 import './App.css';
 
 //Style Active Link with NavLink
@@ -60,7 +60,7 @@ export default App;
 
 //Use RegEx with Routes
 
-const App = (props) => (
+/*const App = (props) => (
   <Router>
     <div>
       <Route 
@@ -75,7 +75,37 @@ const App = (props) => (
   </Router>
 );
 
-export default App;
+export default App;*/
 
 //path='/:a(\d+)/:b' http://localhost:3000/1234/hello
 //path='/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)' http://localhost:3000/03-15-2017.reactrouter
+
+
+
+//Render Catch-All Routes with Switch Component
+
+const Links = () => 
+	<nav>
+		<Link to='/'>Home</Link>
+		<Link to='/about'>About</Link>
+		<Link to='/contact'>Contact</Link>
+	</nav>
+
+	class App extends Component {
+		render() {
+			return (
+				<Router>
+					<div>
+						<Links />
+						<Switch>
+							<Route exact path='/' render={() => <h1>Home</h1>} />
+							<Route path='/about' render={() => <h1>About</h1>} />
+							<Route render={() => <h1>Page not Found</h1>} />
+						</Switch>
+					</div>
+				</Router>
+			)
+		}
+	}
+
+	export default App;
