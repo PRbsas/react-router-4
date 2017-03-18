@@ -5,8 +5,8 @@ import './App.css';
 //Style Active Link with NavLink
 
 /*const isActiveFn = (match, location) => {
- 	console.log(match, location)
-	return match
+  console.log(match, location)
+  return match
 }
 
 const Links = () => (
@@ -14,9 +14,9 @@ const Links = () => (
     <NavLink exact activeClassName='active' to='/'>Home</NavLink>
     <NavLink activeStyle={{color: '#0f0'}} to={{pathname: '/about'}}>About</NavLink>
     <NavLink 
-			isActive={isActiveFn}
-			activeClassName='active'
-			replace to='/contact'>Contact</NavLink>
+      isActive={isActiveFn}
+      activeClassName='active'
+      replace to='/contact'>Contact</NavLink>
   </nav>
 )				
 
@@ -43,12 +43,11 @@ export default App;*/
   <Router>
     <div>
       <Route path='/:page?-:subpage?' render={({match}) => (
-				<h1>
-					Page: {match.params.page || 'Home'}<br />
-					Subpage: {match.params.subpage}
-				</h1>
-			)} />
-
+	<h1>
+	  Page: {match.params.page || 'Home'}<br />
+	  Subpage: {match.params.subpage}
+	</h1>
+      )} />
     </div>
   </Router>
 );
@@ -58,19 +57,20 @@ export default App;
 // http://localhost:3000/react-router = page:react subpage:router*/
 
 
+
 //Use RegEx with Routes
 
 /*const App = (props) => (
   <Router>
     <div>
       <Route 
-				path='/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)' 
-				render={({match}) => (
-				<h1>
-					ParamA: {match.params.a}<br />
-					ParamB: {match.params.b}
-				</h1>
-			)} />
+	path='/:a(\d{2}-\d{2}-\d{4}):b(\.[a-z]+)' 
+	render={({match}) => (
+	  <h1>
+	    ParamA: {match.params.a}<br />
+	    ParamB: {match.params.b}
+	  </h1>
+        )} />
     </div>
   </Router>
 );
@@ -91,68 +91,66 @@ export default App;*/
 		<Link to='/contact'>Contact</Link>
 	</nav>
 
-  class App extends Component {
-		render() {
-			return (
-				<Router>
-					<div>
-						<Links />
-						<Switch>
-							<Route exact path='/' render={() => <h1>Home</h1>} />
-							<Route path='/about' render={() => <h1>About</h1>} />
-							<Route render={() => <h1>Page not Found</h1>} />
-						</Switch>
-					</div>
-				</Router>
-			)
-		}
-	}
+class App extends Component {
+  render() {
+    return (
+      <Router>
+	<div>
+	  <Links />
+	  <Switch>
+	    <Route exact path='/' render={() => <h1>Home</h1>} />
+	    <Route path='/about' render={() => <h1>About</h1>} />
+	    <Route render={() => <h1>Page not Found</h1>} />
+	  </Switch>
+	</div>
+      </Router>
+    )
+  }
+}
 
-	export default App;*/
+export default App;*/
 
 
 
 //Render Multiple Components for the same route
 
 /*const Links = () => 
-	<nav>
-		<Link to='/home'>Home</Link>
-		<Link to='/about'>About</Link>
-	</nav>
+  <nav>
+    <Link to='/home'>Home</Link>
+    <Link to='/about'>About</Link>
+  </nav>
 
 const Header = () => (
-	<div className='header'>
-		<Route 
-			path='/:page'
-			render={({match}) => (
-				<h1>{match.params.page} Header</h1>
-			)} />
-	</div>
+  <div className='header'>
+    <Route 
+      path='/:page'
+      render={({match}) => (
+        <h1>{match.params.page} Header</h1>
+      )} />
+   </div>
 )
 
 const Content = () => (
-	<div className='content'>
-		<Route 
-			path='/:page'
-			render={({match}) => (
-				<h1>{match.params.page} Content</h1>
-			)} />
-	</div> 
+  <div className='content'>
+    <Route 
+      path='/:page'
+      render={({match}) => (
+        <h1>{match.params.page} Content</h1>
+      )} />
+    </div> 
 )
 
 const App = (props) => (
-	<Router>
-		<div>
-			<Links />
-			<Header />
-			<Content />
-		</div>
-	</Router>
+  <Router>
+    <div>
+      <Links />
+      <Header />
+      <Content />
+    </div>
+  </Router>
 )
 				
-
-
-	export default App;*/
+export default App;*/
 
 
 
@@ -160,26 +158,26 @@ const App = (props) => (
 
 const Home = () => (<h1>Home</h1>)
 const Projects = () => (
-	<div>
-		<h1>Projects</h1>
-		<Link to='/projects/color'>Color</Link>
-		<Link to='/projects/sound'>Sound</Link>
-		<Link to='/projects/grid'>Grid</Link>
-		<Route 
-			path='/projects/:section'
-			render={({match}) => <h2>{match.params.section}</h2>} />
-	</div>
+  <div>
+    <h1>Projects</h1>
+    <Link to='/projects/color'>Color</Link>
+    <Link to='/projects/sound'>Sound</Link>
+    <Link to='/projects/grid'>Grid</Link>
+    <Route 
+      path='/projects/:section'
+      render={({match}) => <h2>{match.params.section}</h2>} />
+  </div>
 )
 
 const App = (props) => (
-	<Router>
-		<div>
-			<Link to='/'>Home</Link>
-			<Link to='/projects'>Projects</Link>
-			<Route exact path='/' component={Home} />
-			<Route path='/projects' component={Projects} />
-		</div>
-	</Router>
+  <Router>
+    <div>
+      <Link to='/'>Home</Link>
+      <Link to='/projects'>Projects</Link>
+      <Route exact path='/' component={Home} />
+      <Route path='/projects' component={Projects} />
+    </div>
+  </Router>
 )
 
 export default App;
